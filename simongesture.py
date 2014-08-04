@@ -68,8 +68,13 @@ def main():
     infoRect = infoSurf.get_rect()
     infoRect.topleft = (10, WINDOWHEIGHT - 25)
 
-    pygame.mixer.music.load('simonbackground.mp3')
-    pygame.mixer.music.play(-1, 0.0)
+    musicLoaded = True
+    try:
+        pygame.mixer.music.load('simonbackground.mp3')
+        pygame.mixer.music.play(-1, 0.0)
+    except pygame.error:
+        musicLoaded = False
+
     musicPlaying = True
     newGame = True
 
@@ -115,10 +120,11 @@ def main():
             elif event.type == KEYDOWN and event.key == K_m:
                  # toggle music
                 musicPlaying = not musicPlaying
-                if musicPlaying:
-                    pygame.mixer.music.play(-1, 0.0)
-                else:
-                    pygame.mixer.music.stop()
+                if musicLoaded:
+                    if musicPlaying:
+                        pygame.mixer.music.play(-1, 0.0)
+                    else:
+                        pygame.mixer.music.stop()
 
         if mouseJustReleased:
             mouseJustReleased = False
