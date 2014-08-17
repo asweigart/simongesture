@@ -70,6 +70,7 @@ def main():
 
     musicLoaded = True
     try:
+        # This mp3 can be downloaded from http://www.freesound.org/people/ERH/sounds/30192/
         pygame.mixer.music.load('simonbackground.mp3')
         pygame.mixer.music.play(-1, 0.0)
     except pygame.error:
