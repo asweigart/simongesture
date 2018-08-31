@@ -21,6 +21,7 @@ setup(
     long_description_content_type="text/markdown",
     license='BSD',
     packages=['simongesture'],
+    package_data={'simongesture': ['*.mp3']},
     test_suite='tests',
     install_requires=['moosegesture', 'pygame'],
     keywords="game simon mouse gestures",
