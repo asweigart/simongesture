@@ -3,13 +3,13 @@
 # http://inventwithpython.com/pygame
 # Creative Commons BY-NC-SA 3.0 US
 
-# Requires the moosegesture.py module, which can be downloaded from http://coffeeghost.net/src/moosegesture.py
+# Requires the moosegesture module: pip install moosegesture
 
-# background music from http://www.freesound.org/people/ERH/sounds/30192/
+# Background music from http://www.freesound.org/people/ERH/sounds/30192/
 
-
-import random, sys, time, pygame, math, moosegesture
-from pygame.locals import *
+import random, sys, pygame, moosegesture
+from pygame.locals import MOUSEMOTION, MOUSEBUTTONUP, MOUSEBUTTONDOWN, KEYDOWN, KEYUP, K_m, K_ESCAPE, QUIT
+from moosegesture import UP, UPRIGHT, RIGHT, DOWNRIGHT, DOWN,DOWNLEFT, LEFT, UPLEFT
 
 FPS = 30 # frames per second. Increase to speed up the game.
 WINDOWWIDTH = 640
@@ -38,14 +38,6 @@ DOTRADIUS = 10 # size of dot
 MAXGESTURES = 100 # max number of gestures (no way the player will be able to memorize this many)
 
 # directional constants (made to be the same as moosegesture's
-UP = 8
-UPRIGHT = 9
-RIGHT = 6
-DOWNRIGHT = 3
-DOWN = 2
-DOWNLEFT = 1
-LEFT = 4
-UPLEFT = 7
 DIRECTIONS = (UP, UPRIGHT, RIGHT, DOWNRIGHT, DOWN, DOWNLEFT, LEFT, UPLEFT)
 
 # the blue hint arrow that shows what the most recent gesture the player made is.
@@ -82,8 +74,6 @@ def main():
     while True: # main game loop
         if newGame:
             # Initialize some variables
-            pattern = [] # stores the pattern of colors
-            currentStep = 0 # the color the player must push next
             score = 0
             # when False, the pattern is playing. when True, waiting for the player to click a colored button:
             waitingForInput = False
@@ -109,7 +99,7 @@ def main():
         WINDOWSURF.blit(infoSurf, infoRect)
 
         checkForQuit()
-        mousex, mouse = None, None # stores where the last mouse motion event occurred.
+        mousex, mousey = None, None # stores where the last mouse motion event occurred.
         for event in pygame.event.get(): # event handling loop
             if event.type == MOUSEMOTION:
                 mousex, mousey = event.pos
