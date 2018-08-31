@@ -11,7 +11,7 @@ with open("README.rst", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setup(
-    name='Simon Gesture',
+    name='SimonGesture',
     version=version,
     url='https://github.com/asweigart/simongesture',
     author='Al Sweigart',

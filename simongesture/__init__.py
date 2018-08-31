@@ -7,7 +7,7 @@
 
 # Background music from http://www.freesound.org/people/ERH/sounds/30192/
 
-__version__ = '1.0.0'
+__version__ = '1.0.1'
 
 import random, sys, pygame, moosegesture, os
 from pygame.locals import MOUSEMOTION, MOUSEBUTTONUP, MOUSEBUTTONDOWN, KEYDOWN, KEYUP, K_m, K_ESCAPE, QUIT
